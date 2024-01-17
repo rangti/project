@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.five.mapper.PostMapper">
+
+	<!-- 게시글 저장 -->
+	<insert id="save" parameterType="com.five.model.PostVO">
+		INSERT INTO board_tbl (
+		board_title,
+		board_content,
+		board_writer,
+		board_view_cnt,
+		board_delete_yn,
+		board_created_date,
+		board_modified_date
+		) VALUES (
+			#{board_title},
+			#{board_content},
+			#{board_writer},
+			0,
+			0,
+			now(),
+			now()
+		)
+	</insert>
+	<!-- 게시물 총 개수 -->
+	<select id="getTotal" resultType="int">
+    
+        select count(*) from board_tbl
+    
+    </select>
+
+	<!-- 게시글 상세정보 조회 -->
+	<select id="findById" parameterType="Long" resultType="com.five.model.PostVO">
+		SELECT
+			*
+		FROM
+			board_tbl
+		WHERE
+			board_id = #{board_id}
+	</select>
+
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="com.five.model.PostVO">
+		UPDATE board_tbl
+		SET
+			board_title =#{board_title},
+			board_content=#{board_content},
+			board_modified_date=now()
+		WHERE
+			board_id = #{board_id}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="deleteById" parameterType="Long">
+		delete
+		from
+			board_tbl
+		where
+			board_id=#{board_id}
+	</delete>
+
+	<!-- 게시글 리스트 조회 -->
+	<select id="findAll" resultType="com.five.model.PostVO">
+		SELECT
+			*
+		FROM
+			board_tbl
+	</select>
+	
+	<select id="findAllPageing" resultType="com.five.model.PostVO">
+    <![CDATA[
+        SELECT 
+            board_id, board_writer,board_title, board_content,board_created_date,board_modified_date
+        FROM
+            board_tbl
+        ORDER BY
+            board_id DESC	
+        LIMIT #{skip} , #{amount}
+    ]]>
+	</select>
+
+
+	
+
+
+
+</mapper>

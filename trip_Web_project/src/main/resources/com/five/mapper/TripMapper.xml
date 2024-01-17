@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.five.mapper.TripMapper">
+
+   <select id="getAllTrips" resultType="com.five.model.TripVO">
+        SELECT trip_title, trip_images, trip_addr, trip_contentId FROM trip_data
+    </select>
+    
+    <select id="getFindTrips" resultType="com.five.model.TripVO">
+    	SELECT trip_title, trip_images, trip_addr, trip_contentId, trip_overview FROM trip_detail
+    </select>
+    
+    <select id="Findbydetail" parameterType="String" resultType="com.five.model.TripVO">
+		SELECT
+			*
+		FROM
+			trip_detail
+		WHERE
+			trip_contentId = #{trip_contentId}
+	</select>
+</mapper>
