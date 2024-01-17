@@ -1,0 +1,79 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "proxy": "http://127.0.0.1:5000",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@mui/icons-material": "^5.14.19",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "chart.js": "^4.4.1",
+    "chartjs": "^0.3.24",
+    "chatbot": "^1.2.3",
+    "confirm": "^0.1.1",
+    "cors": "^2.8.5",
+    "d3": "^7.8.5",
+    "dotenv": "^16.3.1",
+    "global": "^4.4.0",
+    "i": "^0.3.7",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
+    "react-bootstrap-icons": "^1.10.3",
+    "react-chartjs-2": "^5.2.0",
+    "react-chatbot": "^0.0.1",
+    "react-csv": "^2.2.2",
+    "react-csv-downloader": "^3.0.0",
+    "react-daum-postcode": "^3.1.3",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-json-to-csv": "^1.2.0",
+    "react-mui": "^0.0.1",
+    "react-native": "^0.73.0",
+    "react-native-geolocation-service": "^5.3.1",
+    "react-player": "^2.14.0",
+    "react-router": "^6.20.1",
+    "react-router-dom": "^6.20.1",
+    "react-scripts": "5.0.1",
+    "react-simple-chatbot": "^0.6.1",
+    "react-swiper": "^0.1.5",
+    "recharts": "^2.10.3",
+    "styled-component": "^2.8.0",
+    "styled-components": "^4.0.0",
+    "styled-reset": "^4.5.1",
+    "swiper": "^7.2.0",
+    "swiper-react": "1.0.0",
+    "three": "^0.160.0",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.89.0",
+    "yarn": "^1.22.21"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

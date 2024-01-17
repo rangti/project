@@ -1,0 +1,15 @@
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  max-width: 330px; /* 최대 너비 (필요에 따라 조절 가능) */
+  height: auto; /* 초기 높이 */
+  max-height: 330px; /* 최대 높이 (필요에 따라 조절 가능) */
+  overflow: auto;
+  padding: 2px;
+  font: 20px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
