@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>그래프</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      .buttons-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .buttons-container button {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #4e73df;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .buttons-container button:hover {
+        background-color: #2e59d9;
+      }
+      .chart-container {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <script>
+    $(document).ready(function () {
+      var year_list = [2020, 2021, 2022, 2023];
+      var name_tags = ["1분기", "2분기", "3분기", "4분기"];
+      var labels_name = [];
+      var labels_name2 = [];
+
+      // 함수를 정의하여 초기 그래프를 그리는 부분을 분리
+      function drawInitialGraph(selectedYear) {
+        labels_name = [];
+        labels_name2 = [];
+        for (var i = 0; i < name_tags.length; i++) {
+          labels_name.push(
+            `${selectedYear}년 해외 감염자 ${name_tags[i]} 데이터`
+          );
+          labels_name2.push(
+            `${selectedYear}년 국내 감염자 ${name_tags[i]} 데이터`
+          );
+        }
+
+        $.ajax({
+          type: "get",
+          url: "/date_graph",
+          data: { year: selectedYear },
+          dataType: "json",
+          success: function (data) {
+            const labels = Object.keys(data);
+            const totalData = labels.map((label) => data[label].total);
+            const koreaData = labels.map((label) => data[label].korea);
+            const abroadData = labels.map((label) => data[label].abroad);
+
+            const ctx = document.getElementById("myChart").getContext("2d");
+            if (window.myChartInstance) {
+              window.myChartInstance.destroy();
+            }
+
+            window.myChartInstance = new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: labels_name,
+                datasets: [
+                  {
+                    label: "abroad",
+                    data: abroadData,
+                    backgroundColor: "rgba(255, 0, 235, 0.2)",
+                    borderColor: "rgba(0, 255, 235, 1)",
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
+                },
+              },
+            });
+
+            const ctxTotal = document
+              .getElementById("myChartTotal")
+              .getContext("2d");
+            if (window.myChartInstanceTotal) {
+              window.myChartInstanceTotal.destroy();
+            }
+          },
+        });
+      }
+
+      // 페이지 로드 시 2020년 데이터로 초기 그래프 그리기
+      drawInitialGraph(2020);
+
+      // 버튼 클릭 이벤트 처리
+      $(".buttons-container button").each(function (idx, data) {
+        $(this).click(function () {
+          var selectedYear = year_list[idx];
+          drawInitialGraph(selectedYear);
+        });
+      });
+    });
+  </script>
+  <body>
+    <h1 style="text-align: center">그래프</h1>
+
+    <div class="buttons-container">
+      <button id="btn2020">2020년</button>
+      <button id="btn2021">2021년</button>
+      <button id="btn2022">2022년</button>
+      <button id="btn2023">2023년</button>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+      <canvas id="myChartTotal"></canvas>
+    </div>
+  </body>
+</html>
