@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Team Five project - Charts</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="static/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <style>
+      .buttons-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .buttons-container button {
+        padding: 12px 24px;
+        margin: 10px;
+        border: 2px solid #4e73df; /* 테두리 스타일 지정 */
+        background-color: transparent; /* 배경색 투명으로 설정 */
+        color: #4e73df; /* 글자색 지정 */
+        font-size: 16px; /* 글자 크기 설정 */
+        cursor: pointer;
+        border-radius: 30px; /* 버튼 모서리 둥글게 설정 */
+        transition: all 0.3s ease; /* 부드러운 전환 효과 */
+      }
+      .buttons-container button:hover {
+        background-color: #4e73df; /* 마우스 호버 시 배경색 변경 */
+        color: #ffffff; /* 마우스 호버 시 글자색 변경 */
+      }
+      .collapse-item {
+        font-size: 13px;
+      }
+    </style>
+    <!-- Custom styles for this template-->
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="/charts"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+
+          <div class="sidebar-brand-text mx-3">Chart</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">Interface</div>
+        <div class="nav-item active">
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>프로젝트 홈</span></a>
+      </div>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="true"
+            aria-controls="collapseTwo"
+          >
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>코로나 발생자 그래프</span>
+        </a>
+          <div
+            id="collapseTwo"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Custom Components:</h6>
+              <a class="collapse-item" href="http://127.0.0.1:5000/charts">국내외 확진자 발생자</a>
+              <a class="collapse-item" href="http://127.0.0.1:5000/happen">시도별 확진자 발생자</a>
+              <a class="collapse-item" href="http://127.0.0.1:5000/die">시도별 사망자</a>
+            </div>
+          </div>
+      </li>
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+        </div>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              
+            </button>
+
+            <!-- Topbar Search -->
+            <form
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
+              <div class="input-group">
+                
+                <div class="input-group-append">
+                 
+                </div>
+              </div>
+            </form>
+                </a>
+                <div
+                 
+                >
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                     
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    ></span>
+                </a>
+                <!-- Dropdown - User Information -->
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
+                  <div class="dropdown-divider"></div>                  
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="buttons-container">
+              <button id="btn2020">2020년</button>
+              <button id="btn2021">2021년</button>
+              <button id="btn2022">2022년</button>
+              <button id="btn2023">2023년</button>
+            </div>
+            <div class="chart-container">
+              <canvas id="myChart" width="1600" height="300"></canvas>
+              <canvas id="myChartTotal" width="1600" height="300"></canvas>
+            </div>
+    <!-- Scroll to Top Button-->
+          <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+          </a>
+      </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/js/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/chart-bar-demo.js"></script>
+</body>
+<script>
+  $(document).ready(function () {
+    var year_list = [2020, 2021, 2022, 2023];
+    var name_tags = ["1분기", "2분기", "3분기", "4분기"];
+    var labels_name = [];
+    var labels_name2 = [];
+
+    // 함수를 정의하여 초기 그래프를 그리는 부분을 분리
+    function drawInitialGraph(selectedYear) {
+      labels_name = [];
+      labels_name2 = [];
+      for (var i = 0; i < name_tags.length; i++) {
+        labels_name.push(
+          `${selectedYear}년 ${name_tags[i]} 시도별 사망자 데이터`
+        );
+        labels_name2.push(
+          `${selectedYear}년 ${name_tags[i]} 시도별 사망자 합계 데이터`
+        );
+      }
+
+      $.ajax({
+        type: "get",
+        url: "/die_graph",
+        data: { year: selectedYear },
+        dataType: "json",
+        success: function (data) {
+          const labels = Object.keys(data);
+                const totalData = labels.map((label) => data[label].total);
+                const seoulData = labels.map((label) => data[label].seoul);
+                const busanData = labels.map((label) => data[label].busan);
+                const daeguData = labels.map((label) => data[label].daegu);
+                const daejeonData = labels.map((label) => data[label].daejeon);
+                const gyeonggiData = labels.map((label) => data[label].gyeonggi);
+
+          const ctx = document.getElementById("myChart").getContext("2d");
+          if (window.myChartInstance) {
+            window.myChartInstance.destroy();
+          }
+
+          window.myChartInstance = new Chart(ctx, {
+                  type: "bar",
+                  data: {
+                    labels: labels_name,
+                    datasets: [
+                      {
+                          label: "서울",
+                          data: seoulData,
+                          backgroundColor: "rgba(255, 99, 132, 0.7)", // 어두운 빨간색
+                          borderColor: "rgba(255, 99, 132, 1)",
+                          borderWidth: 1,
+                        },
+                        {
+                          label: "부산",
+                          data: busanData,
+                          backgroundColor: "rgba(54, 162, 235, 0.7)", // 어두운 파란색
+                          borderColor: "rgba(54, 162, 235, 1)",
+                          borderWidth: 1,
+                        },
+                        {
+                          label: "대구",
+                          data: daeguData,
+                          backgroundColor: "rgba(255, 206, 86, 0.7)", // 어두운 노란색
+                          borderColor: "rgba(255, 206, 86, 1)",
+                          borderWidth: 1,
+                        },
+                        {
+                          label: "대전",
+                          data: daejeonData,
+                          backgroundColor: "rgba(75, 192, 192, 0.7)", // 어두운 청록색
+                          borderColor: "rgba(75, 192, 192, 1)",
+                          borderWidth: 1,
+                        },
+                        {
+                          label: "경기도",
+                          data: gyeonggiData,
+                          backgroundColor: "rgba(153, 102, 255, 0.7)", // 어두운 보라색
+                          borderColor: "rgba(153, 102, 255, 1)",
+                          borderWidth: 1,
+                        },
+                    ],
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                      },
+                    },
+                  },
+                });
+                const ctxTotal = document
+                  .getElementById("myChartTotal")
+                  .getContext("2d");
+                if (window.myChartInstanceTotal) {
+                  window.myChartInstanceTotal.destroy();
+                }
+                window.myChartInstanceTotal = new Chart(ctxTotal, {
+                  type: "bar",
+                  data: {
+                    labels: labels_name2, // x-axis labels (dates)
+                    datasets: [
+                      {
+                        label: "합계",
+                        data: totalData,
+                        backgroundColor: "rgba(255, 99, 132, 0.9)",
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                      },
+              },
+            },
+          });
+        },
+      });
+    }
+
+    // 페이지 로드 시 2020년 데이터로 초기 그래프 그리기
+    drawInitialGraph(2020);
+
+    // 버튼 클릭 이벤트 처리
+    $(".buttons-container button").each(function (idx, data) {
+      $(this).click(function () {
+        var selectedYear = year_list[idx];
+        drawInitialGraph(selectedYear);
+      });
+    });
+  });
+</script>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      /* Top 버튼 스타일 */
+      #scroll-btn {
+        display: none;
+        opacity: 0;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        background-color: #ef476f;
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        font: bold 20px monospace;
+        transition: opacity 0.5s, transform 0.5s;
+        z-index: 9999;
+      }
+      #scroll-btn.show {
+        display: block;
+        opacity: 1;
+        transition: opacity 1s, transform 1s;
+      }
+      .navbar-nav .nav-link {
+        font-size: 16px; /* 헤더에있는 navbar-nav tag의(홈,프로젝트) 글자크기를 조정*/
+      }
+      .text-primary{
+        font-size: 22px; /* 헤더에있는 text-primary tag의(Team Five projects) 글자크기를 조정*/
+      }
+      .title-font-size{
+        font-size: 26px;
+      }
+
+    </style>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>프로젝트 목록</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="static/css/styles.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+      <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-5">
+          <a class="navbar-brand" href="/">
+            <span class="fw-bolder text-primary">Team Five projects</span></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+              <li class="nav-item">
+                <a class="nav-link" href="/">홈</a>
+              </li>
+              <li class="nav-item">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="projects">프로젝트</a>
+              </li>
+              <li class="nav-item">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Projects Section-->
+      <section class="py-5 " >
+        <div class="container px-5 mb-5">
+          <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0">
+            <!-- <a href="projects" class="text-gradient"> -->
+            <span class="text-gradient d-inline">Projects</span>
+            <!-- </a> -->
+            </h1>
+          </div>
+          <div class="row gx-4 justify-content-center">
+            <div class="col-lg-11 col-xl-9 col-xxl-8">
+              <!-- Project Card 1-->
+              <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                <div class="card-body p-0">
+                  <div class="d-flex align-items-center">
+                    <div class="p-5">
+                      <h3 class="fw-bolder title-font-size">COVID-19 발생 국내외 현황 그래프</h3>
+                      <br>
+                      <li>
+                        국내발생,해외유입의 COVID-19 확진자 발생현황을 연도별 그래프로 나타냄
+                      </li>
+                    </div>
+                    <a href="charts">
+                      <img
+                        class="img-fluid"
+                        src="static/gora.jpg"
+                        alt="..."
+                        style="width: 90%; height: 300px;"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project Card 2-->
+              <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                <div class="card-body p-0">
+                  <div class="d-flex align-items-center">
+                    <div class="p-5">
+                      <h2 class="fw-bolder">Project Name 2</h2>
+                      <p>추후 수정</p>
+                    </div>
+                    <img
+                      class="img-fluid"
+                      src="https://dummyimage.com/300x400/343a40/6c757d"
+                      alt="..."
+                    />
+                  </div>
+                  </div>
+                </div>
+                <!-- Project Card 3-->
+              <div class="card overflow-hidden shadow rounded-4 border-0">
+                <div class="card-body p-0">
+                  <div class="d-flex align-items-center">
+                    <div class="p-5">
+                      <h2 class="fw-bolder">Project Name 3</h2>
+                      <p>추후 수정</p>
+                    </div>
+                    <img
+                      class="img-fluid"
+                      src="https://dummyimage.com/300x400/343a40/6c757d"
+                      alt="..."
+                    />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Call to action section-->
+      <section class="py-5 bg-gradient-primary-to-secondary text-white">
+        <div class="container px-5 my-5">
+          <div class="text-center">
+            <h2 class="display-4 fw-bolder mb-4">
+            </h2>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto bg-gradient-primary-to-secondary text-white">
+      <div class="container px-5">
+        <div
+          class="row align-items-center justify-content-between flex-column flex-sm-row"
+        >
+          <div class="col-auto" >
+            <div class="small m-0">Copyright &copy; Your Website 2023</div>
+          </div>
+          <div class="col-auto">
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="static/js/scripts.js"></script>
+    <!-- 페이지를 상단으로 Top 버튼 생성 -->
+    <button id="scroll-btn" onclick="scrollToTop()">&uarr;</button>
+  </body>
+  <script>
+    // 페이지 최상단으로 스크롤 이동하는 함수
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // 윈도우 스크롤 이벤트
+    window.addEventListener('scroll', function () {
+      var scrollBtn = document.getElementById("scroll-btn");
+      if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        scrollBtn.classList.add("show");
+      } else {
+        scrollBtn.classList.remove("show");
+      }
+    });
+  </script>
+</html>
