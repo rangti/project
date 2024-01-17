@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <h1>회원가입</h1>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12">
+          <form method="POST">
+            <div class="id_wrap">
+              <div class="userId">아이디</div>
+              <div class="id_input_box">
+                <input
+                  type="text"
+                  class="userId_input"
+                  id="userId"
+                  placeholder="아이디"
+                  name="userId"
+                />
+              </div>
+            </div>
+
+            <div class="name_wrap">
+              <div class="userName">이름</div>
+              <div class="user_input_box">
+                <input
+                  type="text"
+                  class="userName_input"
+                  id="userName"
+                  placeholder="이름"
+                  name="userName"
+                />
+              </div>
+            </div>
+
+            <div class="pw_wrap">
+              <div class="userPw">비밀번호</div>
+              <div class="pw_input_box">
+                <input
+                  type="password"
+                  class="userPw_input"
+                  id="userPw"
+                  placeholder="비밀번호"
+                  name="userPw"
+                />
+              </div>
+            </div>
+
+            <div class="pwck_wrap">
+              <div class="re_userPw">비밀번호확인</div>
+              <div class="pwck_input_box">
+                <input
+                  type="password"
+                  class="re_userPw_input"
+                  id="re_userPw"
+                  placeholder="비밀번호확인"
+                  name="re_userPw"
+                />
+              </div>
+            </div>
+
+            <div class="mail_wrap">
+              <div class="userMail">이메일</div>
+              <div class="">
+                <input
+                  class="userMail_input"
+                  id="userMail"
+                  placeholder="이메일"
+                  name="userMail"
+                />
+              </div>
+            </div>
+
+            <div class="address_wrap">
+              <div class="address_name">주소</div>
+
+              <div class="address_input_1_wrap">
+                <div class="address_input_1_box">
+                  <input
+                    class="userAddr1_input"
+                    name="userAddr1"
+                    readonly="readonly"
+                  />
+                </div>
+                <div class="address_button" onclick="execution_daum_address()">
+                  <span>주소 찾기</span>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="address_input_2_wrap">
+                <div class="address_input_2_box">
+                  <input
+                    class="userAddr2_input"
+                    name="userAddr2"
+                    readonly="readonly"
+                  />
+                </div>
+              </div>
+
+              <div class="address_input_3_wrap">
+                <div class="address_input_3_box">
+                  <input
+                    class="userAddr3_input"
+                    name="userAddr3"
+                    readonly="readonly"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="join_button_wrap">
+              <button type="" class="sign_up_button">가입하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* 다음 주소 연동 */
+      function execution_daum_address() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ""; // 주소 변수
+            var extraAddr = ""; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === "R") {
+              // 사용자가 도로명 주소를 선택했을 경우
+              addr = data.roadAddress;
+            } else {
+              // 사용자가 지번 주소를 선택했을 경우(J)
+              addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if (data.userSelectedType === "R") {
+              // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+              // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+              if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                extraAddr += data.bname;
+              }
+              // 건물명이 있고, 공동주택일 경우 추가한다.
+              if (data.buildingName !== "" && data.apartment === "Y") {
+                extraAddr +=
+                  extraAddr !== ""
+                    ? ", " + data.buildingName
+                    : data.buildingName;
+              }
+              // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+              if (extraAddr !== "") {
+                extraAddr = " (" + extraAddr + ")";
+              }
+              // 주소변수 문자열과 참고항목 문자열 합치기
+              addr += extraAddr;
+            } else {
+              addr += " ";
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            $(".userAddr1_input").val(data.zonecode);
+            $(".userAddr2_input").val(addr);
+
+            // 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
+            $(".userAddr3_input").attr("readonly", false);
+            $(".userAddr3_input").focus();
+          },
+        }).open();
+      }
+      <!--알림창-->
+      document.addEventListener("DOMContentLoaded", function () {
+        var message = "{{ message }}";
+        if (message) {
+          alert(message);
+        }
+
+        // 이메일 유효성을 확인하는 함수
+        function validateEmail(email) {
+          const re = /\S+@\S+\.\S+/;
+          return re.test(email);
+        }
+
+        document
+          .querySelector("form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var userId = document.querySelector("#userId").value;
+            var userName = document.querySelector("#userName").value;
+            var userPw = document.querySelector("#userPw").value;
+            var re_userPw = document.querySelector("#re_userPw").value;
+            var userMail = document.querySelector("#userMail").value;
+            var userAddr1 = document.querySelector(".userAddr1_input").value;
+            var userAddr2 = document.querySelector(".userAddr2_input").value;
+            var userAddr3 = document.querySelector(".userAddr3_input").value;
+
+            if (userId.trim() === "") {
+              alert("아이디를 입력하세요.");
+              return;
+            }
+            if (userName.trim() === "") {
+              alert("이름을 입력하세요.");
+              return;
+            }
+            if (userPw.trim() === "") {
+              alert("비밀번호를 입력하세요.");
+              return;
+            }
+            if (userPw.trim().length < 4) {
+              alert('비밀번호는 4자 이상이어야 합니다.');
+              return;
+            }
+            if (re_userPw.trim() === "" || re_userPw.trim() !== userPw.trim()) {
+              alert("비밀번호를 확인하세요.");
+              return;
+            }
+            if (userMail.trim() === "") {
+              alert("이메일을 입력하세요.");
+              return;
+            }
+            if (userAddr1.trim() === "") {
+              alert("주소를 입력하세요.");
+              return;
+            }
+            if (userAddr2.trim() === "") {
+              alert("주소를 입력하세요.");
+              return;
+            }
+            if (userAddr3.trim() === "") {
+              alert("주소를 입력하세요.");
+              return;
+            }
+            // 이메일 유효성을 확인하고 유효하지 않으면 알림을 표시하고 가입을 막음
+            if (!validateEmail(userMail.trim())) {
+              alert("올바른 이메일 형식이 아닙니다.");
+              return;
+            }
+            document.querySelector("form").submit();
+          });
+      });
+    </script>
+  </body>
+</html>
